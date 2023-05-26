@@ -1,133 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <style>
-        *{
- padding: 0;
- margin: 0;
-}
+  <title>User Registration Form</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .outer-container {
+      height: 100vh;
+      padding-top: 50px;
+    }
 
-.outer-container-registration {
- height: 100vh;
- padding-top: 60px;
-}
+    .inner-container {
+      width: 60%;
+      margin: auto;
+      background-color: rgb(233,232,232);
+      padding-top: 10px;
+    }
+    .inner-container h1 {
+      text-align: center;
+    }
+    
+    .inner-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 50%;
+      margin: auto;
+      margin-top: 30px;
+    }
 
-.inner-container-registration {
- width: 50%;
- margin: auto;
- background-color: rgb(233, 232, 232);
- padding-top: 30px;
- padding-bottom: 30px;
-}
+    .inner-container form input {
+      padding: 10px 15px;
+      border-radius: 4px;
+      outline: none;
+    }
+    #btn{
+      margin-top: 30px;
+      margin-bottom: 50px;
+      background-color: rgb(51, 51, 51);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    
 
-.inner-container-registration h1 {
- text-align: center;
-}
+    input[type="radio"], input[type="checkbox"] {
+      
+      width: 5%; /* Add some spacing between radio buttons and labels */
+    }
 
-.inner-container-registration p {
-margin-top: 30px;
-text-align: center;
-}
-
-.inner-container-registration form {
-display: flex;
-flex-direction: column; 
-gap: 10px;
-width: 70%;
-margin: auto;
-margin-top: 30px;
-}
-
-.inner-container-registration form input {
-padding: 10px 15px;
-border-radius: 6px;
-outline: none;
-} 
-
-.btn{
- margin-top: 30px;
- background-color: rgb(51, 51, 51);
- color: white;
- font-weight: 700;
- cursor: pointer;
-}
-    </style>
+    select {
+      width: 20%;
+    }
+    
+  </style>
 </head>
 <body>
+  <div class="outer-container">
+    <div class="inner-container">
+      <h1>User Registration Form</h1>
+      <form action="">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
     
-    <div class="outer-container-registration">
-        <div class="inner-container-registration">
-            <h1>Registration</h1>
-            <form id="registrationForm" action="">
-             <label for="username">First Name:</label>
-             <input id="fname" type="text" placeholder="First Name">
-             <label for="username">Last Name:</label>
-             <input id="lname" type="text" placeholder="Last Name">
-             <label for="email">Email</label>
-             <input id="email" type="email" placeholder="Email">
-             <label for="password">Password:</label>
-             <input id="password" type="password" placeholder="Password">
-             <label for="contact">Contact:</label>
-             <input id="contact" type="text" placeholder="Contact Details">
-             <label for="address">Address:</label>
-             <input id="address" type="text" placeholder="Address">
-             <input onclick="handleSubmit()" class="btn" type="submit" value="Submit">
-            </form>
-            <p>Already have an account ? <a href="loginPage.html">Click Here</a></p>
-        </div>
-      </div>
-</body>
-<script>
-    const handleSubmit = () => {
-        const fname = document.getElementById('fname').value;
-        const lname = document.getElementById('lname').value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const contact = document.getElementById('contact').value;
-        const address = document.getElementById('address').value;
-        console.log("Btn clicked !\n", name, email, password, contact, address);
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+    
+        <label for="phone">Phone Number:</label>
+        <select id="countryCode" name="countryCode">
+          <option value="+1">+1 (USA)</option>
+          <option value="+44">+44 (UK)</option>
+          <option value="+91">+91 (IND)</option>
+        </select>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+    
+        <label for="sex">Sex:</label>
+        <input type="radio" id="male" name="gender" value="male"><label for="male">Male</label>
+    
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+        <label for="dob">Date of Birth:</label>
+        <select id="day" name="day" required></select>
+        <select id="month" name="month" required></select>
+        <select id="year" name="year" required></select>
+    
+        <label for="languages">Languages Known:</label>
+        <input type="checkbox" id="english" name="languages[]" value="English">
+        <label for="english">English</label>
+        <input type="checkbox" id="marathi" name="languages[]" value="Marathi">
+        <label for="marathi">Marathi</label>
+        <input type="checkbox" id="hindi" name="languages[]" value="Hindi">
+        <label for="hindi">Hindi</label>
+        <input type="checkbox" id="tamil" name="languages[]" value="Tamil">
+        <label for="tamil">Tamil</label>
+    
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" cols="50"></textarea>
+    
+        <input id="btn" type="submit" value="Register">
+      </form>
+    </div>
+  </div>
+  
 
-        var nameRegex = /^[a-zA-Z]+$/;
-        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        var mobileRegex = /^\d{10}$/;
-
-        var errors = [];
-        
-        if(fname.trim() === '' || lname.trim() === '' || email.trim() === '' || password.trim() === '' || contact.trim() === '' || address.trim() === ''){
-            errors.push("Please fill all the details");
-        }
-        if(!nameRegex.test(fname.trim())){
-            errors.push("First Name in the wrong format");
-        }
-        if(!nameRegex.test(lname.trim())){
-            errors.push("Last Name in the wrong format");
-        }
-        
-        if(!emailRegex.test(email)){
-            errors.push("Email in the wrong format");
-        }
-        if(password.length < 6){
-            errors.push("password should not be less than 6 characters")
-        }
-        if(!mobileRegex.test(contact)){
-            errors.push("Mobile Number in the wrong format");
-        }
-        if(address.trim() === ''){
-            errors.push('Please fill the address');
-        }
-
-        if(errors.length > 0 ) {
-            var error = errors.join('\n');
-            alert(error);
-        }
-        else {
-            alert("Successfully submited the form");
-        }
-        
+  <script>
+    // Generate options for day select element
+    var daySelect = document.getElementById("day");
+    for (var i = 1; i <= 31; i++) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.text = i;
+      daySelect.appendChild(option);
     }
-</script>
+
+    // Generate options for month select element
+    var monthSelect = document.getElementById("month");
+    var months = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ];
+    for (var i = 0; i < months.length; i++) {
+      var option = document.createElement("option");
+      option.value = i + 1;
+      option.text = months[i];
+      monthSelect.appendChild(option);
+    }
+
+    // Generate options for year select element
+    var yearSelect = document.getElementById("year");
+    var currentYear = new Date().getFullYear();
+    for (var i = currentYear - 100; i <= currentYear; i++) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.text = i;
+      yearSelect.appendChild(option);
+    }
+  </script>
+</body>
 </html>
